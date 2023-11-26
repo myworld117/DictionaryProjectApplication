@@ -22,10 +22,15 @@ public class TranslationController {
     private TextField toLang;
 
     @FXML
-    void translateTo(ActionEvent event) throws IOException {
+    public void translateTo(ActionEvent event) throws IOException {
         if (!Objects.equals(fromLang.getText(), "")) {
             toLang.setText(GoogleTranslateAPI.googleTranslate("en", "vi", fromLang.getText()));
         }
+    }
+
+    public void clearFromLang() {
+        fromLang.clear();
+        toLang.clear();
     }
 
 }

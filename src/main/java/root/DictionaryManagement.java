@@ -87,7 +87,7 @@ public class DictionaryManagement extends Dictionary {
 
     public int binaryFind (String keyWord){
         try {
-            this.wordArrayList.sort(new ComparatorWord());
+       //     this.wordArrayList.sort(new ComparatorWord());
             int left = 0;
             int right = getDictionary().size() - 1;
             while (left <= right) {
