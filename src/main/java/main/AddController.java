@@ -8,10 +8,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import root.NewDictionary;
+import root.SortPattern;
 import root.Word;
 import javafx.event.ActionEvent;
 
 import java.net.URL;
+import java.util.Collections;
 import java.util.ResourceBundle;
 
 public class AddController extends MenuController implements Initializable {

@@ -42,8 +42,12 @@ public class MenuController implements Initializable {
     protected AddController addController;
     @FXML
     private AnchorPane addPane;
-    protected NewDictionary dictionary = new NewDictionary();
+    protected NewDictionary dictionary;
     protected String source = "src\\main\\resources\\vocab\\eng_vie.txt";
+
+    public MenuController() {
+        this.dictionary = new NewDictionary();
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
@@ -84,5 +88,9 @@ public class MenuController implements Initializable {
         sideContent.getChildren().clear();
       //  translationController.clearFromLang();
         sideContent.getChildren().setAll(translatePane);
+    }
+
+    public NewDictionary getDictionary() {
+        return dictionary;
     }
 }
