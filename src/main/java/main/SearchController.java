@@ -63,8 +63,16 @@ public class SearchController extends MenuController implements Initializable {
         if (!prefix.isEmpty()) {
             String words = trie.findAllWord(prefix);
             list.addAll(words.split("\n"));
+            ListWordView.setItems(list);
+
         }
-        ListWordView.setItems(list);
+        else {
+
+            for (Word word: dictionary.getVocab()) {
+                list.add(word.getWord_target());
+            }
+            ListWordView.setItems(list);
+        }
     }
 
 
@@ -93,7 +101,7 @@ public class SearchController extends MenuController implements Initializable {
             alert.showAndWait();
         } else {
                 String word = searchWord.getText();
-                String definition = super.getDictionary().binaryLookUp(word);
+                String definition = dictionary.binaryLookUp(word);
                 if (definition != NewDictionary.NOT_FOUND) {
                     DefinitionArea.getEngine().loadContent(definition, "text/html");
                 } else {
@@ -201,6 +209,9 @@ public class SearchController extends MenuController implements Initializable {
     @FXML
     void handleOnRemoveButton() {
         dictionary.removeWord(searchWord.getText());
+        updateListView(searchWord.getText());
+        DefinitionArea.getEngine().loadContent("");
+        Header.setText("");
     }
 
 }
