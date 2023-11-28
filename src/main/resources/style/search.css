@@ -1,0 +1,109 @@
+.root {
+    -fx-background-color: #303137FF;
+    -button-color: #747f8d;
+    -hover-button-color: #2e3338;
+
+    -purple-color: #303137FF;
+    -hover-purple-color: #4752C4;
+
+    -text-color: white;
+    -hover-text-color: #2e3338;
+
+    -gray-color: #e6e6e6;
+    -title-color: white;
+    -hover-background-color: #D4D7DC;
+}
+
+.text-field {
+    -fx-background-size: 22;
+    -fx-background-color: #303137FF;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: right center;
+    -fx-background-radius: 0 3 3 0;
+    -fx-text-color: -text-color;
+    -fx-text-fill: -text-color;
+    -fx-border-radius: 0 3 3 0;
+    -fx-border-width: 1;
+    -fx-font-size: 15;
+}
+
+.text-field:focused {
+    -fx-border-color: -text-color;
+}
+
+
+.list-cell {
+    -fx-background-color: #303137FF;
+    -fx-text-fill: -text-color;
+    -fx-font-size: 13;
+}
+
+
+.list-cell:filled:hover, .list-cell:filled:selected:focused, .list-cell:filled:selected {
+    -fx-background-color: -hover-background-color;
+    -fx-text-fill: -hover-text-color;
+    -fx-cursor: hand;
+}
+
+.title-meaning {
+    -fx-text-fill: -title-color;
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+}
+
+
+.html-editor {
+    -fx-pref-width: 100;
+    -fx-border-color: -purple-color;
+    -fx-border-radius: 3;
+    -fx-page-fill: #d3cfcf;
+    -fx-font-size: 12;
+}
+
+.html-editor .button, .html-editor .toggle-button {
+    -fx-background-color: -hover-background-color;
+}
+
+
+.button {
+    -fx-pref-width: 35;
+    -fx-pref-height: 35;
+    -fx-padding: 0;
+}
+
+.button-search {
+    -fx-graphic: url('../image/magnifier.png');
+    -fx-background-color: #303137FF;
+    -fx-background-radius: 2 0 0 2;
+    -fx-border-width: 1;
+    -fx-padding: 3;
+}
+
+.button-speak {
+    -fx-graphic: url('../image/volume.png');
+    -fx-background-color: #303137FF;
+    -fx-background-size: 30;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-pref-width: 25;
+    -fx-pref-height: 25;
+}
+
+.button-speak:hover {
+    -fx-graphic: url('../image/volume.png');
+    -fx-background-color: none;
+}
+
+
+.button-remove {
+    -fx-graphic: url('../image/trash.png');
+    -fx-background-color: #303137FF;
+    -fx-background-size: 30;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+.button-remove:hover {
+    -fx-graphic: url('../image/trash.png');
+    -fx-background-color: none;
+}

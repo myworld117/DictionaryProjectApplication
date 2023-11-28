@@ -1,0 +1,50 @@
+.root {
+    -fx-background-color: #303137FF;
+    -button-color: #303137FF;
+    -hover-button-color: #747f8d;
+    -text-color: white;
+    -hover-text-color: white;
+}
+
+
+.button {
+    -fx-background-color: #303137FF;
+    -fx-text-fill: white;
+    -fx-font-size: 13;
+    -fx-font-weight: bold;
+}
+
+.button:hover {
+    -fx-cursor: hand;
+}
+
+.button-speak {
+    -fx-graphic: url('../image/volume.png');
+    -fx-background-color: #303137FF;
+    -fx-background-size: 30;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-pref-width: 25;
+    -fx-pref-height: 25;
+}
+
+.button-speak:hover {
+    -fx-graphic: url('../image/volume.png');
+    -fx-background-color: none;
+}
+
+.button-translate-to {
+    -fx-border-radius: 3;
+    -fx-padding: 5;
+    -fx-pref-width: 120;
+    -fx-pref-height: 30;
+    -fx-text-fill: white;
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
+    -fx-graphic: url('../image/translation.png');
+}
+
+.button-translate-to:hover{
+    -fx-background-color: -hover-button-color;
+    -fx-graphic: url('../image/translation.png');
+}

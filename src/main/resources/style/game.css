@@ -1,0 +1,19 @@
+.button {
+    -fx-background-color: #303137FF;
+    -fx-text-fill: white;
+    -fx-font-size: 13;
+    -fx-font-weight: bold;
+}
+
+.button:hover {
+    -fx-text-fill: -hover-text-color;
+    -fx-cursor: hand;
+}
+
+.button-retry {
+    -fx-graphic: url('../image/reload.png');
+}
+
+.text {
+    -fx-font-family: "JetBrains Mono";
+}

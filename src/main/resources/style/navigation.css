@@ -1,0 +1,86 @@
+.side-bar {
+    -fx-background-color: #423e3d;
+}
+
+.inside {
+    -fx-background-color: #DC343B;
+}
+
+.root {
+    -button-color: #747f8d;
+    -hover-button-color: #ff5c5c;
+
+    -purple-color: #5865F2;
+    -hover-purple-color: #4752C4;
+
+    -text-color: #555c5d;
+    -hover-text-color: #2e3338;
+
+    -gray-color: #e6e6e6;
+    -title-color: #060607;
+    -hover-background-color: #747f8d;
+}
+
+.button {
+    -fx-text-fill: white;
+    -fx-font-size: 11;
+}
+
+.button:hover {
+    -fx-background-color: -hover-background-color;
+    -fx-text-fill: -hover-text-color;
+    -fx-cursor: hand;
+}
+
+
+.button-home {
+    -fx-background-color: none;
+    -fx-graphic: url('../image/home.png');
+}
+
+
+.button-search {
+    -fx-background-color: none;
+    -fx-graphic: url('../image/magnifier.png');
+}
+
+.button-search:focused{
+    -fx-background-color: #DC343B;
+}
+
+
+.button-translate {
+    -fx-background-color: none;
+    -fx-graphic: url('../image/translation.png');
+}
+
+.button-translate:focused{
+    -fx-background-color: #DC343B;
+}
+
+.button-add {
+    -fx-background-color: none;
+    -fx-graphic: url('../image/plus.png');
+}
+
+.button-add:focused{
+    -fx-background-color: #DC343B;
+}
+
+.button-favourite {
+    -fx-background-color: none;
+    -fx-graphic: url('../image/star.png');
+}
+
+.button-favourite:focused{
+    -fx-background-color: #DC343B;
+}
+
+.button-game {
+    -fx-background-color: none;
+    -fx-graphic: url('../image/game-controller.png');
+}
+
+.button-game:focused{
+    -fx-background-color: #DC343B;
+}

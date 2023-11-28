@@ -1,6 +1,5 @@
 package main;
 
-import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,14 +7,10 @@ import javafx.scene.layout.AnchorPane;
 
 public class GeneralDash {
 
-    @FXML
-    private JFXButton SearchButton;
 
     @FXML
     private AnchorPane sideContent;
 
-    @FXML
-    private JFXButton translateButton;
     @FXML
     private AnchorPane translatePanel;
     @FXML
@@ -51,7 +46,6 @@ public class GeneralDash {
 
     @FXML
     void toTranslatePanel(ActionEvent event) {
-        translateButton.getStyleClass().add("active");
         setMainContent(translatePanel);
     }
 

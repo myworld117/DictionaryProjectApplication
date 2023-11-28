@@ -6,71 +6,54 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="857.0" styleClass="third-color" stylesheets="@../style/navigation.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.MenuController">
+<AnchorPane prefHeight="600.0" prefWidth="857.0" stylesheets="@../style/navigation.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.MenuController">
     <children>
-        <VBox fx:id="sea" alignment="CENTER" prefHeight="71.0" prefWidth="57.0">
-            <children>
-                <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="67.0" prefWidth="77.0" textFill="#b54848">
-                    <styleClass>
-                        <String fx:value="button-favicon" />
+      <AnchorPane prefHeight="608.0" prefWidth="79.0" styleClass="side-bar">
+         <children>
+              <VBox fx:id="sea" alignment="CENTER" prefHeight="77.0" prefWidth="62.0">
+                  <children>
+                      <Button fx:id="homeButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#toHomePanel" prefHeight="58.0" prefWidth="53.0" styleClass="button-home" textFill="#b54848" />
+                  </children>
+              </VBox>
+              <VBox alignment="CENTER" layoutY="98.0" prefHeight="348.0" prefWidth="78.0">
+                  <children>
+                      <Button fx:id="searchButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#toSearchPanel" prefHeight="76.0" prefWidth="85.0" styleClass="button-search" text="Tra từ" textFill="WHITE">
+                          <font>
+                              <Font size="13.0" />
+                          </font>
+                      </Button>
+                      <Button fx:id="translateButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#toTranslatePanel" prefHeight="80.0" prefWidth="79.0" styleClass="button-translate" text="Google" textFill="#8e9297">
+                          <font>
+                              <Font size="13.0" />
+                          </font>
+                      </Button>
+                      <Button fx:id="addButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#toAddPanel" prefHeight="82.0" prefWidth="78.0" text="Thêm từ" textFill="#8e9297">
+                          <font>
+                              <Font size="13.0" />
+                          </font>
+                          <styleClass>
+                              <String fx:value="text-navi-bar" />
+                              <String fx:value="button-add" />
+                          </styleClass>
+                      </Button>
+                      <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="77.0" prefWidth="78.0" styleClass="button-favourite" text="Yêu thích" textFill="#8e9297">
+                          <font>
+                              <Font size="13.0" />
+                          </font>
+                      </Button>
+                  <Button fx:id="gameButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#toGamePanel" prefHeight="77.0" prefWidth="78.0" text="Game" textFill="#8e9297">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <styleClass>
                         <String fx:value="text-navi-bar" />
-                    </styleClass>
-                </Button>
-            </children>
-        </VBox>
-        <VBox alignment="CENTER" layoutX="-1.0" layoutY="71.0" prefHeight="237.0" prefWidth="57.0">
-            <children>
-                <Button fx:id="searchButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#toSearchPanel" prefHeight="58.0" prefWidth="57.0" text="Tra từ" textFill="#8e9297">
-                    <font>
-                        <Font size="7.0" />
-                    </font>
-                    <styleClass>
-                        <String fx:value="text-navi-bar" />
-                        <String fx:value="button-search" />
-                    </styleClass>
-                </Button>
-                <Button fx:id="translateButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#toTranslatePanel" prefHeight="58.0" prefWidth="57.0" text="Google" textFill="#8e9297">
-                    <font>
-                        <Font size="7.0" />
-                    </font>
-                    <styleClass>
-                        <String fx:value="text-navi-bar" />
-                        <String fx:value="button-translate" />
-                    </styleClass>
-                </Button>
-                <Button fx:id="addButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="58.0" prefWidth="57.0" text="Thêm từ" textFill="#47586b">
-                    <font>
-                        <Font size="7.0" />
-                    </font>
-                    <styleClass>
-                        <String fx:value="text-navi-bar" />
-                        <String fx:value="button-favourite" />
-                    </styleClass>
-                </Button>
-                <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="58.0" prefWidth="57.0" text="Lịch sử" textFill="#8e9297">
-                    <font>
-                        <Font size="7.0" />
-                    </font>
-                    <styleClass>
-                        <String fx:value="text-navi-bar" />
-                        <String fx:value="button-history" />
-                    </styleClass>
-                </Button>
-            </children>
-        </VBox>
-        <VBox alignment="CENTER" prefHeight="22.0" prefWidth="57.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0">
-            <children>
-                <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="36.0" prefWidth="57.0" textFill="#8e9297">
-                    <font>
-                        <Font size="7.0" />
-                    </font>
-                    <styleClass>
-                        <String fx:value="text-navi-bar" />
-                        <String fx:value="button-setting" />
-                    </styleClass>
-                </Button>
-            </children>
-        </VBox>
-        <AnchorPane fx:id="sideContent" layoutX="57.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <String fx:value="button-game" />
+                     </styleClass>
+                  </Button>
+                  </children>
+              </VBox>
+         </children>
+      </AnchorPane>
+        <AnchorPane fx:id="sideContent" layoutX="76.0" prefHeight="608.0" prefWidth="786.0" styleClass="inside" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="76.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="0.0" />
     </children>
 </AnchorPane>

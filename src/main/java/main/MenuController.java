@@ -1,45 +1,42 @@
 package main;
 
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
-import org.w3c.dom.Text;
 import root.NewDictionary;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Dictionary;
 import java.util.ResourceBundle;
 
 public class MenuController implements Initializable {
 
     @FXML
-    private Button searchButton;
-
-    @FXML
     private AnchorPane sideContent;
-
     @FXML
     private Button translateButton;
     @FXML
     private Button addButton;
     @FXML
+    private Button gameButton;
+    @FXML
+    private Button homeButton;
+    @FXML
+    private AnchorPane homePane;
+    @FXML
     private AnchorPane searchPane;
     @FXML
     private AnchorPane translatePane;
- //   protected TranslationController translationController;
+    @FXML
+    private AnchorPane gamePane;
+    protected TranslationController translationController;
     protected Translate2 translate2;
     protected SearchController searchController;
     protected AddController addController;
+    protected GameController gameController;
     @FXML
     private AnchorPane addPane;
     protected NewDictionary dictionary;
@@ -61,6 +58,9 @@ public class MenuController implements Initializable {
             FXMLLoader addLoader = new FXMLLoader(getClass().getResource("/dictionary/add.fxml"));
             addPane = addLoader.load();
             addController = addLoader.getController();
+            FXMLLoader gameLoader = new FXMLLoader(getClass().getResource("/dictionary/game.fxml"));
+            gamePane = gameLoader.load();
+            gameController = gameLoader.getController();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -86,11 +86,23 @@ public class MenuController implements Initializable {
     @FXML
     public void toTranslatePanel() {
         sideContent.getChildren().clear();
-      //  translationController.clearFromLang();
+        //translationController.clearFromLang();
         sideContent.getChildren().setAll(translatePane);
+    }
+
+    @FXML
+    public void toGamePanel() {
+        sideContent.getChildren().clear();
+        sideContent.getChildren().setAll(gamePane);
+    }
+
+    @FXML
+    public void toHomePanel() {
+
     }
 
     public NewDictionary getDictionary() {
         return dictionary;
     }
+
 }

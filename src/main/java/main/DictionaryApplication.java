@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class DictionaryApplication extends Application {
@@ -11,8 +12,10 @@ public class DictionaryApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load((getClass().getResource("/dictionary/test.fxml")));
+        Image icon = new Image("image/logo.png");
         primaryStage.setTitle("Dictionary");
-        primaryStage.setScene(new Scene(root, 900, 700));
+        primaryStage.getIcons().add(icon);
+        primaryStage.setScene(new Scene(root, 857, 600));
         primaryStage.show();
     }
 
