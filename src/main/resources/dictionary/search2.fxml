@@ -6,16 +6,14 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="second-color" stylesheets="@../style/search.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.SearchController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="813.0" styleClass="second-color" stylesheets="@../style/search.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.SearchController">
    <children>
       <AnchorPane layoutY="-3.0" prefHeight="459.0" prefWidth="257.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="-3.0">
          <children>
@@ -35,7 +33,7 @@
             </HBox>
             <VBox layoutX="-3.0" layoutY="58.0" prefHeight="525.0" prefWidth="258.0" style="-fx-background-radius: 3;" styleClass="third-color" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="-3.0" AnchorPane.topAnchor="58.0">
                <children>
-                  <ListView fx:id="ListWordView" onMouseClicked="#handleListViewClick" prefHeight="526.0" prefWidth="265.0" style="-fx-background-color: none;">
+                  <ListView fx:id="ListWordView" onMouseClicked="#handleListViewClick" prefHeight="554.0" prefWidth="258.0" style="-fx-background-color: none;">
                      <styleClass>
                         <String fx:value="list-cell" />
                         <String fx:value="root" />
@@ -64,14 +62,14 @@
                   </Button>
                </children>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" layoutX="384.0" layoutY="53.0" prefHeight="46.0" prefWidth="125.0" AnchorPane.rightAnchor="7.399999999999977" AnchorPane.topAnchor="53.0">
+            <HBox alignment="CENTER_RIGHT" layoutX="398.4000000000001" layoutY="46.0" prefHeight="46.0" prefWidth="125.0" AnchorPane.rightAnchor="5.999999999999886" AnchorPane.topAnchor="46.0">
                <children>
-                  <Button fx:id="bookmarkTrue" contentDisplay="TOP" mnemonicParsing="false" prefHeight="35.0" prefWidth="57.0" textFill="#666666">
+                  <Button fx:id="bookmarkTrue" contentDisplay="TOP" mnemonicParsing="false" prefHeight="35.0" prefWidth="57.0" styleClass="button-favourite-to" textFill="#666666">
                      <font>
                         <Font size="7.0" />
                      </font>
                   </Button>
-                  <Button fx:id="editButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleEditButton" prefHeight="35.0" prefWidth="57.0" textFill="#8e9297">
+                  <Button fx:id="editButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleEditButton" prefHeight="35.0" prefWidth="57.0" styleClass="button-edit" textFill="#8e9297">
                      <font>
                         <Font size="7.0" />
                      </font>
@@ -83,86 +81,44 @@
                   </Button>
                </children>
             </HBox>
-            <AnchorPane layoutX="10.0" layoutY="87.0" prefHeight="468.0" prefWidth="486.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="87.0">
+            <AnchorPane layoutX="10.0" layoutY="87.0" prefHeight="548.0" prefWidth="780.0" styleClass="root" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="87.0">
                <children>
-                  <WebView fx:id="DefinitionArea" layoutX="1.0" layoutY="7.0" prefHeight="461.0" prefWidth="497.0" styleClass="html-editor" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="7.0" />
-                  <AnchorPane fx:id="EditPane" layoutX="10.0" layoutY="10.0" prefHeight="538.0" prefWidth="615.0">
+                  <WebView fx:id="DefinitionArea" layoutX="1.0" layoutY="7.0" prefHeight="471.0" prefWidth="507.0" styleClass="html-editor" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="7.0" />
+                  <AnchorPane fx:id="EditPane" layoutY="11.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="507.0" styleClass="editor">
                      <children>
-                        <Pane layoutX="3.0" prefHeight="91.0" prefWidth="764.0" styleClass="header" stylesheets="@../../../../../DictionaryProject/src/main/resources/Utils/style.css">
-                           <children>
-                              <Pane layoutX="316.0" layoutY="20.0">
-                                 <children>
-                                    <Label layoutX="3.0" prefHeight="30.0" prefWidth="221.0" text="Happy Learning">
-                                       <font>
-                                          <Font name="System Bold Italic" size="20.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutY="21.0" prefHeight="30.0" prefWidth="212.0" text="Edit Word">
-                                       <font>
-                                          <Font name="System Italic" size="18.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </Pane>
-                              <ImageView fitHeight="78.0" fitWidth="110.0" layoutX="206.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../../DictionaryProject/src/main/resources/Utils/images/img2.jpg" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </Pane>
-                        <AnchorPane layoutY="91.0" prefHeight="446.0" prefWidth="769.0">
-                           <children>
-                              <Pane layoutX="2.0" prefHeight="45.0" prefWidth="764.0" styleClass="title" stylesheets="@../../../../../DictionaryProject/src/main/resources/Utils/style.css">
-                                 <children>
-                                    <Label layoutX="20.0" prefHeight="45.0" prefWidth="240.0" text="Update Meaning" textFill="#2a292a">
-                                       <font>
-                                          <Font name="System Bold Italic" size="18.0" />
-                                       </font>
-                                       <graphic>
-                                          <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../../../../../DictionaryProject/src/main/resources/Utils/icons/icons8_add_64px.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </Label>
-                                 </children>
-                              </Pane>
-                              <Label layoutX="31.0" layoutY="55.0" text="Từ loại">
-                                 <font>
-                                    <Font name="System Bold" size="16.0" />
-                                 </font>
-                                 <graphic>
-                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../../../../DictionaryProject/src/main/resources/Utils/icons/icons8_brick_64px.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Label>
-                              <TextField fx:id="wordTypeInput" layoutX="31.0" layoutY="85.0" prefHeight="32.0" prefWidth="386.0" styleClass="english-word-input" stylesheets="@../../../../../DictionaryProject/src/main/resources/Utils/style.css" />
-                              <Label layoutX="30.0" layoutY="125.0" text="Nghĩa mới" textFill="#020202">
-                                 <font>
-                                    <Font name="System Bold" size="16.0" />
-                                 </font>
-                                 <graphic>
-                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../../../../DictionaryProject/src/main/resources/Utils/icons/icons8_edit_property_64px.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Label>
-                              <TextArea fx:id="newMeaningInput" layoutX="31.0" layoutY="155.0" prefHeight="200.0" prefWidth="386.0" promptText="Nhập nghĩa mới của từ tại đây..." styleClass="meaning-input" stylesheets="@../../../../../DictionaryProject/src/main/resources/Utils/style.css" wrapText="true" />
-                              <Button fx:id="updateBtn" layoutX="214.0" layoutY="371.0" mnemonicParsing="false" onAction="#handleClickUpdateBtn" prefHeight="32.0" prefWidth="60.0" styleClass="add-button" stylesheets="@../../../../../DictionaryProject/src/main/resources/Utils/style.css" text="Thêm " />
-                              <ImageView fitHeight="297.0" fitWidth="296.0" layoutX="435.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, #8c7ae6, 10, 0, 0, 0);">
-                                 <image>
-                                    <Image url="@../../../../../DictionaryProject/src/main/resources/Utils/images/img3.jpg" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </AnchorPane>
+                        <Label layoutX="153.0" layoutY="14.0" prefHeight="45.0" prefWidth="240.0" text="Update Meaning">
+                           <font>
+                              <Font name="System Bold Italic" size="18.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="17.0" layoutY="140.0" text="Nghĩa mới">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="newMeaningInput" layoutX="17.0" layoutY="172.0" prefHeight="198.0" prefWidth="471.0" promptText="Nhập nghĩa mới của từ tại đây..." styleClass="root" wrapText="true">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </TextArea>
+                        <Button fx:id="updateBtn" layoutX="236.0" layoutY="395.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleClickUpdateBtn" prefHeight="32.0" prefWidth="98.0" styleClass="text-field" text="OK">
+                           <font>
+                              <Font size="6.0" />
+                           </font>
+                        </Button>
+                        <TextArea fx:id="wordTypeInput" layoutX="17.0" layoutY="86.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="471.0" styleClass="root">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </TextArea>
+                        <Label contentDisplay="RIGHT" layoutX="17.0" layoutY="60.0" text="Loại từ">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                </children>

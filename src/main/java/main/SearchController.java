@@ -59,7 +59,7 @@ public class SearchController extends MenuController implements Initializable {
     @FXML
     private Button updateBtn;
     @FXML
-    private TextField wordTypeInput;
+    private TextArea wordTypeInput;
     @FXML
     private AnchorPane EditPane;
 

@@ -69,7 +69,7 @@
 
 .button-favourite {
     -fx-background-color: none;
-    -fx-graphic: url('../image/star.png');
+    -fx-graphic: url('../image/favourite.png');
 }
 
 .button-favourite:focused{

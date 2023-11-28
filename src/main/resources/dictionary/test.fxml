@@ -58,7 +58,7 @@
               </VBox>
          </children>
       </AnchorPane>
-        <AnchorPane fx:id="sideContent" layoutX="76.0" prefHeight="608.0" prefWidth="786.0" styleClass="inside" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="76.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="0.0">
+        <AnchorPane fx:id="sideContent" layoutX="76.0" prefHeight="600.0" prefWidth="786.0" styleClass="inside" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="76.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="48.0" prefHeight="126.0" prefWidth="385.0" text="Welcome to NetDict" textAlignment="CENTER" textFill="WHITE">
                <font>

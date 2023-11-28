@@ -42,6 +42,36 @@
     -fx-cursor: hand;
 }
 
+.editor {
+    -fx-background-color: #ffffff;
+}
+
+.button-edit {
+    -fx-graphic: url('../image/edit.png');
+    -fx-background-color: #303137FF;
+    -fx-background-size: 30;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+.button-edit:hover {
+    -fx-graphic: url('../image/edit.png');
+    -fx-background-color: none;
+}
+
+.button-favourite-to {
+    -fx-graphic: url('../image/favourite.png');
+    -fx-background-color: #303137FF;
+    -fx-background-size: 30;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+.button-favourite-to:hover {
+    -fx-graphic: url('../image/favourite.png');
+    -fx-background-color: none;
+}
+
 .title-meaning {
     -fx-text-fill: -title-color;
     -fx-font-size: 20;
