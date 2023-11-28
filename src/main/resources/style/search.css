@@ -2,14 +2,11 @@
     -fx-background-color: #303137FF;
     -button-color: #747f8d;
     -hover-button-color: #2e3338;
-
-    -purple-color: #303137FF;
     -hover-purple-color: #4752C4;
 
     -text-color: white;
     -hover-text-color: #2e3338;
 
-    -gray-color: #e6e6e6;
     -title-color: white;
     -hover-background-color: #D4D7DC;
 }
@@ -54,16 +51,9 @@
 
 .html-editor {
     -fx-pref-width: 100;
-    -fx-border-color: -purple-color;
     -fx-border-radius: 3;
-    -fx-page-fill: #d3cfcf;
     -fx-font-size: 12;
 }
-
-.html-editor .button, .html-editor .toggle-button {
-    -fx-background-color: -hover-background-color;
-}
-
 
 .button {
     -fx-pref-width: 35;

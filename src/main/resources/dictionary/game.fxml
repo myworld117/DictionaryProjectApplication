@@ -17,18 +17,18 @@
       </ImageView>
       <Text fx:id="text" fill="WHITE" layoutX="15.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Word" wrappingWidth="358.1366271972656">
          <font>
-            <Font size="36.0" />
+            <Font name="Franklin Gothic Demi" size="36.0" />
          </font>
       </Text>
       <ImageView fx:id="imageView" fitHeight="301.0" fitWidth="383.0" layoutX="380.0" layoutY="91.0" pickOnBounds="true" />
       <Text fx:id="result" fill="WHITE" layoutX="443.0" layoutY="493.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Result" textAlignment="CENTER" wrappingWidth="245.3367919921875">
          <font>
-            <Font size="29.0" />
+            <Font name="Franklin Gothic Medium Cond" size="32.0" />
          </font>
       </Text>
       <Text fx:id="realWord" fill="WHITE" layoutX="400.0" layoutY="536.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Actual word" textAlignment="CENTER" wrappingWidth="330.936767578125">
          <font>
-            <Font size="24.0" />
+            <Font name="Franklin Gothic Medium" size="25.0" />
          </font>
       </Text>
       <FlowPane fx:id="buttons" hgap="5.0" layoutX="22.0" layoutY="402.0" prefHeight="219.0" prefWidth="324.0" vgap="5.0">
@@ -65,7 +65,7 @@
       </FlowPane>
       <Text fill="WHITE" layoutX="382.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Mr.Incredible Game" textAlignment="CENTER" wrappingWidth="383.199951171875">
          <font>
-            <Font size="29.0" />
+            <Font name="Franklin Gothic Demi Cond" size="29.0" />
          </font>
       </Text>
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#newGame" prefHeight="46.0" prefWidth="86.0" styleClass="button-retry">
@@ -74,7 +74,7 @@
          </font></Button>
       <Text fx:id="mistakeText" fill="WHITE" layoutX="347.0" layoutY="432.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Text" textAlignment="CENTER" wrappingWidth="424.00347900390625">
          <font>
-            <Font size="23.0" />
+            <Font name="Franklin Gothic Medium Cond" size="23.0" />
          </font>
       </Text>
       <Text fx:id="hintText" fill="WHITE" layoutX="15.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Hint:" textAlignment="CENTER" wrappingWidth="317.603515625">

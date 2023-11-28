@@ -13,7 +13,7 @@ public class DictionaryApplication extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load((getClass().getResource("/dictionary/test.fxml")));
         Image icon = new Image("image/logo.png");
-        primaryStage.setTitle("Dictionary");
+        primaryStage.setTitle("NetDict");
         primaryStage.getIcons().add(icon);
         primaryStage.setScene(new Scene(root, 857, 600));
         primaryStage.show();

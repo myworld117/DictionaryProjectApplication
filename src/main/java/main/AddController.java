@@ -12,6 +12,7 @@ import root.SortPattern;
 import root.Word;
 import javafx.event.ActionEvent;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Collections;
 import java.util.ResourceBundle;
@@ -31,6 +32,10 @@ public class AddController extends MenuController implements Initializable {
     private TextField wordtypeArea;
     @FXML
     private Button confirmAddButton;
+
+    public AddController() {
+    }
+
 
     public void clear() {
         meaningArea.clear();

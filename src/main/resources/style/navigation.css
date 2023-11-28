@@ -3,7 +3,7 @@
 }
 
 .inside {
-    -fx-background-color: #DC343B;
+    -fx-background-color: #b33127;
 }
 
 .root {
@@ -45,7 +45,7 @@
 }
 
 .button-search:focused{
-    -fx-background-color: #DC343B;
+    -fx-background-color: #b33127;
 }
 
 
@@ -55,7 +55,7 @@
 }
 
 .button-translate:focused{
-    -fx-background-color: #DC343B;
+    -fx-background-color: #b33127;
 }
 
 .button-add {
@@ -64,7 +64,7 @@
 }
 
 .button-add:focused{
-    -fx-background-color: #DC343B;
+    -fx-background-color: #b33127;
 }
 
 .button-favourite {
@@ -73,7 +73,7 @@
 }
 
 .button-favourite:focused{
-    -fx-background-color: #DC343B;
+    -fx-background-color: #b33127;
 }
 
 .button-game {
@@ -82,5 +82,5 @@
 }
 
 .button-game:focused{
-    -fx-background-color: #DC343B;
+    -fx-background-color: #b33127;
 }

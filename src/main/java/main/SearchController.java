@@ -16,6 +16,7 @@ import javafx.scene.web.WebView;
 import root.NewDictionary;
 import root.Word;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -49,6 +50,11 @@ public class SearchController extends MenuController implements Initializable {
     @FXML
     private Button removeButton;
     private TextToSpeech textToSpeech = new TextToSpeech();
+
+    public SearchController() throws IOException {
+        super();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         trie = dictionary.getTrie();
@@ -67,7 +73,6 @@ public class SearchController extends MenuController implements Initializable {
 
         }
         else {
-
             for (Word word: dictionary.getVocab()) {
                 list.add(word.getWord_target());
             }
