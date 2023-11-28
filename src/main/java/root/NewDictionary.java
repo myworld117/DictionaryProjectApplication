@@ -61,7 +61,7 @@
             if (index != -1) {
                 return vocab.get(index).getWord_explain();
             } else {
-                return "Từ bạn tìm chưa có trong từ điển.";
+                return NOT_FOUND;
             }
         }
 
@@ -128,6 +128,9 @@
 
         public void removeWord(String word) {
             int index = Collections.binarySearch(vocab, new Word(word, null));
-            vocab.remove(index);
+            if (index != -1) {
+                vocab.remove(index);
+                trie.delete(word);
+            }
         }
     }

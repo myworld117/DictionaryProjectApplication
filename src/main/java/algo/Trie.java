@@ -3,7 +3,9 @@ package algo;
 public class Trie {
     private static final int alphabetSize = 26;
     public static TrieNode root = new TrieNode();
-
+    public String getAllWords() {
+        return findAll(root);
+    }
     public void add(String key) {
         key = key.toLowerCase();
         TrieNode trieNode = root;
@@ -80,6 +82,21 @@ public class Trie {
         return ans;
     }
 
+    private String findAll(TrieNode trieNode) {
+        String ans = "";
+        if (trieNode == null) {
+            return "";
+        }
+        if (trieNode.isEndOfWord()) {
+            ans = trieNode.getWord() + "\n";
+        }
+        for (int i = 0; i < alphabetSize; i++) {
+            if (trieNode.getChildren().get(i) != null) {
+                ans = ans.concat(findAll(trieNode.getChildren().get(i)));
+            }
+        }
+        return ans;
+    }
 
     static boolean isEmpty(TrieNode trieNode) {
         for (int i = 0; i < alphabetSize; i++) {
