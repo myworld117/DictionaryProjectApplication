@@ -67,7 +67,7 @@ public class AddController extends MenuController implements Initializable {
         Word word = getAddWord();
         if (word != null && dictionary.binaryLookUp(word.getWord_target()) == NewDictionary.NOT_FOUND) {
             dictionary.addWord(word);
-            dictionary.updateWordToFile(word, source);
+            dictionary.addWordToFile(word, source);
             Alert alert = new Alert(Alert.AlertType.WARNING);
             Image image = new Image(getClass().getResourceAsStream("/image/check.png"));
             ImageView imageView = new ImageView(image);

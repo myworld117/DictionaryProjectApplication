@@ -78,7 +78,7 @@ public class MenuController implements Initializable {
 
     @FXML
     public void toSearchPanel() {
-        searchController.clearSearch();
+        //searchController.clearSearch();
         sideContent.getChildren().clear();
         sideContent.getChildren().setAll(searchPane);
     }

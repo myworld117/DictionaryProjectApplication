@@ -14,8 +14,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebView;
 import root.NewDictionary;
+import root.Notification;
 import root.Word;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -48,13 +50,58 @@ public class SearchController extends MenuController implements Initializable {
 
     @FXML
     private Button removeButton;
+
+    @FXML
+    private Button editButton;
+
+    @FXML
+    private TextArea newMeaningInput;
+    @FXML
+    private Button updateBtn;
+    @FXML
+    private TextField wordTypeInput;
+    @FXML
+    private AnchorPane EditPane;
+
     private TextToSpeech textToSpeech = new TextToSpeech();
+
+    public SearchController() throws IOException {
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        EditPane.setVisible(false);
         trie = dictionary.getTrie();
+        startListView();
         searchWord.textProperty().addListener((observableValue, oldValue, newValue) -> {
             updateListView(newValue);
+            updateDefinionArea(newValue);
+            updateHeader(newValue);
         });
+    }
+
+    public void updateHeader(String word) {
+        if(dictionary.binaryLookUp(word) == NewDictionary.NOT_FOUND || word =="") {
+            Header.setText("");
+        }
+        else {
+            Header.setText(word);
+        }
+    }
+    public void updateDefinionArea(String word) {
+        if (word == "" || dictionary.binaryLookUp(word) == NewDictionary.NOT_FOUND) {
+            DefinitionArea.getEngine().loadContent("");
+        }
+         else {
+             DefinitionArea.getEngine().loadContent(dictionary.binaryLookUp(word));
+        }
+    }
+    public void startListView() {
+        if (searchWord.getText() == "") {
+            list.clear();
+            list.addAll(NewDictionary.getTmp());
+            ListWordView.setItems(list);
+        }
     }
 
 
@@ -65,13 +112,6 @@ public class SearchController extends MenuController implements Initializable {
             list.addAll(words.split("\n"));
             ListWordView.setItems(list);
 
-        }
-        else {
-
-            for (Word word: dictionary.getVocab()) {
-                list.add(word.getWord_target());
-            }
-            ListWordView.setItems(list);
         }
     }
 
@@ -88,7 +128,7 @@ public class SearchController extends MenuController implements Initializable {
                 searchWord.setText(word);
                 Header.setText(word);
                 DefinitionArea.getEngine().loadContent(definition, "text/html");
-                }
+            }
         }
     }
 
@@ -100,77 +140,77 @@ public class SearchController extends MenuController implements Initializable {
             alert.setContentText("Bạn chưa nhập từ nào");
             alert.showAndWait();
         } else {
-                String word = searchWord.getText();
-                String definition = dictionary.binaryLookUp(word);
-                if (definition != NewDictionary.NOT_FOUND) {
-                    DefinitionArea.getEngine().loadContent(definition, "text/html");
-                } else {
-                    Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
-                    confirmAlert.setContentText("Từ bạn tìm không tồn tại. Bạn có muốn thêm vào từ điển không?");
-                    confirmAlert.setHeaderText("Cảnh báo");
-                    ButtonType buttonAdd = new ButtonType("Add");
-                    ButtonType buttonCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
-                    confirmAlert.getButtonTypes().setAll(buttonAdd, buttonCancel);
+            String word = searchWord.getText();
+            String definition = dictionary.binaryLookUp(word);
+            if (definition != NewDictionary.NOT_FOUND) {
+                DefinitionArea.getEngine().loadContent(definition, "text/html");
+            } else {
+                Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
+                confirmAlert.setContentText("Từ bạn tìm không tồn tại. Bạn có muốn thêm vào từ điển không?");
+                confirmAlert.setHeaderText("Cảnh báo");
+                ButtonType buttonAdd = new ButtonType("Add");
+                ButtonType buttonCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+                confirmAlert.getButtonTypes().setAll(buttonAdd, buttonCancel);
 
-                    Optional<ButtonType> result = confirmAlert.showAndWait();
+                Optional<ButtonType> result = confirmAlert.showAndWait();
 
-                    if (result.isPresent() && result.get() == buttonAdd) {
-                        // Hiển thị hộp thoại nhập liệu cho phát âm, nghĩa, và loại từ
-                        Dialog<String[]> addDialog = new Dialog<>();
-                        addDialog.setTitle("Thêm từ mới");
-                        addDialog.setHeaderText(null);
-                        // Tạo VBox
-                        VBox vbox = new VBox();
-                        vbox.setSpacing(20);
-                        // Thêm các controls vào VBox
-                        TextField pronunciationField = new TextField();
-                        pronunciationField.setPromptText("Phát âm");
+                if (result.isPresent() && result.get() == buttonAdd) {
+                    // Hiển thị hộp thoại nhập liệu cho phát âm, nghĩa, và loại từ
+                    Dialog<String[]> addDialog = new Dialog<>();
+                    addDialog.setTitle("Thêm từ mới");
+                    addDialog.setHeaderText(null);
+                    // Tạo VBox
+                    VBox vbox = new VBox();
+                    vbox.setSpacing(20);
+                    // Thêm các controls vào VBox
+                    TextField pronunciationField = new TextField();
+                    pronunciationField.setPromptText("Phát âm");
 
-                        TextField meaningField = new TextField();
-                        meaningField.setPromptText("Nghĩa của từ");
+                    TextField meaningField = new TextField();
+                    meaningField.setPromptText("Nghĩa của từ");
 
-                        TextField wordTypeField = new TextField();
-                        wordTypeField.setPromptText("Loại từ");
+                    TextField wordTypeField = new TextField();
+                    wordTypeField.setPromptText("Loại từ");
 
-                        vbox.getChildren().addAll(
-                                new Label("Phát âm:"), pronunciationField,
-                                new Label("Nghĩa của từ:"), meaningField,
-                                new Label("Loại từ:"), wordTypeField
-                        );
+                    vbox.getChildren().addAll(
+                            new Label("Phát âm:"), pronunciationField,
+                            new Label("Nghĩa của từ:"), meaningField,
+                            new Label("Loại từ:"), wordTypeField
+                    );
 
 
-                        addDialog.getDialogPane().setContent(vbox);
+                    addDialog.getDialogPane().setContent(vbox);
 
-                        // Tạo nút "Add" và "Cancel"
-                        ButtonType buttonTypeAdd = new ButtonType("Add", ButtonBar.ButtonData.OK_DONE);
-                        ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
-                        addDialog.getDialogPane().getButtonTypes().addAll(buttonTypeAdd, buttonTypeCancel);
+                    // Tạo nút "Add" và "Cancel"
+                    ButtonType buttonTypeAdd = new ButtonType("Add", ButtonBar.ButtonData.OK_DONE);
+                    ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+                    addDialog.getDialogPane().getButtonTypes().addAll(buttonTypeAdd, buttonTypeCancel);
 
-                        // Thiết lập kết quả khi nút "Add" được nhấp
-                        addDialog.setResultConverter(dialogButton -> {
-                            if (dialogButton == buttonTypeAdd) {
-                                String pronunciation = pronunciationField.getText().trim();
-                                String meaning = meaningField.getText().trim();
-                                String wordType = wordTypeField.getText().trim();
-                                return new String[]{pronunciation, meaning, wordType};
-                            }
-                            return null;
-                        });
+                    // Thiết lập kết quả khi nút "Add" được nhấp
+                    addDialog.setResultConverter(dialogButton -> {
+                        if (dialogButton == buttonTypeAdd) {
+                            String pronunciation = pronunciationField.getText().trim();
+                            String meaning = meaningField.getText().trim();
+                            String wordType = wordTypeField.getText().trim();
+                            return new String[]{pronunciation, meaning, wordType};
+                        }
+                        return null;
+                    });
 
-                        Optional<String[]> resultAdd = addDialog.showAndWait();
-                        resultAdd.ifPresent(parts -> {
-                            String pronunciation = parts[0];
-                            String meaning = parts[1];
-                            String wordType = parts[2];
-                            String definition1 = dictionary.getWordFormatted(word, pronunciation, wordType, meaning);
-                            Word newWord = new Word(word, definition1);
-                            dictionary.addWord(newWord);
-                            updateListView(word);
-                        });
-                    }
+                    Optional<String[]> resultAdd = addDialog.showAndWait();
+                    resultAdd.ifPresent(parts -> {
+                        String pronunciation = parts[0];
+                        String meaning = parts[1];
+                        String wordType = parts[2];
+                        String definition1 = dictionary.getWordFormatted(word, pronunciation, wordType, meaning);
+                        Word newWord = new Word(word, definition1);
+                        dictionary.addWord(newWord);
+                        updateListView(word);
+                    });
                 }
             }
         }
+    }
 
 
 
@@ -207,11 +247,55 @@ public class SearchController extends MenuController implements Initializable {
     }
 
     @FXML
-    void handleOnRemoveButton() {
+    public void handleOnRemoveButton() {
+        Notification notification = new Notification();
+        notification.forCofirm("Xóa từ", "Bạn có chắc chắn muốn xóa từ này ?");
         dictionary.removeWord(searchWord.getText());
         updateListView(searchWord.getText());
         DefinitionArea.getEngine().loadContent("");
         Header.setText("");
     }
 
+    @FXML
+    public void handleClickUpdateBtn(ActionEvent event) {
+        if (!searchWord.getText().isEmpty() && !wordTypeInput.getText().isEmpty() && !newMeaningInput.getText().isEmpty()) {
+            String word = searchWord.getText();
+            String wordType = wordTypeInput.getText();
+            String newMeaning = newMeaningInput.getText();
+            String path = "src\\main\\resources\\vocab\\dictionaries.txt";
+            dictionary.updateWord(word, wordType, newMeaning, path);
+        }
+        EditPane.setVisible(false);
+        DefinitionArea.setVisible(true);
+        resetEditPane();
+    }
+    @FXML
+    public void handleEditButton(ActionEvent event) {
+        if (!searchWord.getText().isEmpty() && dictionary.binaryLookUp(searchWord.getText()) != NewDictionary.NOT_FOUND) {
+            Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmAlert.setContentText("Bạn có muốn sửa từ này không");
+            confirmAlert.setHeaderText("Thông báo");
+            ButtonType buttonAdd = new ButtonType("Sửa");
+            ButtonType buttonCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+            confirmAlert.getButtonTypes().setAll(buttonAdd, buttonCancel);
+
+            Optional<ButtonType> result = confirmAlert.showAndWait();
+
+            if (result.isPresent() && result.get() == buttonAdd) {
+                DefinitionArea.setVisible(false);
+                EditPane.setVisible(true);
+            }
+        }
+        else if (dictionary.binaryLookUp(searchWord.getText() )== NewDictionary.NOT_FOUND) {
+            Notification notification = new Notification();
+            notification.forInfo("Thông báo", "Từ bạn tìm không tồn tại");
+        } else if (searchWord.getText().isEmpty()) {
+            Notification notification = new Notification();
+            notification.forWarning("Thông báo", "Bạn chưa nhập từ nào");
+        }
+    }
+    public void  resetEditPane() {
+        wordTypeInput.setText("");
+        newMeaningInput.setText("");
+    }
 }
