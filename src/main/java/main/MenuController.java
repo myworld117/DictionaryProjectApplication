@@ -5,23 +5,17 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import root.NewDictionary;
 import root.Quotes;
-import root.Word;
 
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.EventObject;
 import java.util.ResourceBundle;
 
 public class MenuController implements Initializable {
@@ -37,6 +31,8 @@ public class MenuController implements Initializable {
     @FXML
     private Button homeButton;
     @FXML
+    private Button synButton;
+    @FXML
     private Text quote;
     @FXML
     private Label time;
@@ -48,8 +44,7 @@ public class MenuController implements Initializable {
     private AnchorPane translatePane;
     @FXML
     private AnchorPane gamePane;
-    protected TranslationController translationController;
-    protected Translate2 translate2;
+    protected TranslateController translateController;
     protected SearchController searchController;
     protected AddController addController;
     protected GameController gameController;
@@ -57,7 +52,7 @@ public class MenuController implements Initializable {
     private AnchorPane addPane;
     private static final Quotes quotes = new Quotes();
     static final String myQuote = quotes.getRandomQuote();
-    protected NewDictionary dictionary;
+    protected static NewDictionary dictionary;
     protected String source = "src\\main\\resources\\vocab\\eng_vie.txt";
 
     public MenuController() {
@@ -74,7 +69,7 @@ public class MenuController implements Initializable {
             FXMLLoader translateLoader = new FXMLLoader(getClass().getResource("/dictionary/translate2.fxml"));
             translatePane = translateLoader.load();
             //translationController = translateLoader.getController();
-            translate2 = translateLoader.getController();
+            translateController = translateLoader.getController();
             FXMLLoader addLoader = new FXMLLoader(getClass().getResource("/dictionary/add.fxml"));
             addPane = addLoader.load();
             addController = addLoader.getController();
@@ -91,6 +86,15 @@ public class MenuController implements Initializable {
         homeButton.setOnAction(event -> {
             toHomePanel();
         });
+
+        synButton.setOnAction(event -> {
+            try {
+                toSynPanel();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
     }
 
     private void generateQuote() {
@@ -122,16 +126,19 @@ public class MenuController implements Initializable {
         sideContent.getChildren().setAll(addPane);
     }
 
+    public void toSynPanel() throws IOException {
+        AnchorPane SynPane = new FXMLLoader(getClass().getResource("/dictionary/Syn.fxml")).load();
+        sideContent.getChildren().setAll(SynPane);
+    }
     @FXML
     public void toSearchPanel() {
-        //searchController.clearSearch();
-        sideContent.getChildren().clear();
+        searchController.clearSearch();
         sideContent.getChildren().setAll(searchPane);
     }
 
     @FXML
     public void toTranslatePanel() {
-        sideContent.getChildren().clear();
+        translateController.clearTranslate();
         //translationController.clearFromLang();
         sideContent.getChildren().setAll(translatePane);
     }

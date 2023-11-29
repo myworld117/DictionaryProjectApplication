@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="608.0" prefWidth="786.0" stylesheets="@../style/translate.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Translate2">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="608.0" prefWidth="786.0" stylesheets="@../style/translate.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.TranslateController">
     <children>
       <VBox layoutX="14.0" layoutY="58.0" prefHeight="458.0" prefWidth="760.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="18.0">
          <children>
@@ -30,7 +30,7 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="164.0" prefHeight="62.0" prefWidth="87.0" AnchorPane.bottomAnchor="0.799999999999983" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="707.0" />
                         <TextArea fx:id="inputTextArea" cacheShape="false" focusTraversable="false" layoutX="89.0" layoutY="66.0" pickOnBounds="false" prefHeight="158.0" prefWidth="329.0" promptText="Type Here..." scaleShape="false" wrapText="true" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" />
-                  <Button layoutX="21.0" layoutY="170.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="55.0" styleClass="button-speak" />
+                  <Button layoutX="21.0" layoutY="170.0" mnemonicParsing="false" onAction="#handleFromLangButton" prefHeight="32.0" prefWidth="55.0" styleClass="button-speak" />
                     </children>
                     <padding>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -51,7 +51,7 @@
                         <TextArea fx:id="outputTextArea" editable="false" layoutX="7.0" prefHeight="200.0" prefWidth="200.0" wrapText="true" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" />
                         <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                             <children>
-                                <Button mnemonicParsing="false" styleClass="button-speak">
+                                <Button fx:id="toLangButton" mnemonicParsing="false" onAction="#handleToLangButton" styleClass="button-speak">
                                     <HBox.margin>
                                         <Insets right="10.0" />
                                     </HBox.margin>

@@ -1,11 +1,9 @@
 package algo;
 
 public class Trie {
-    private static final int alphabetSize = 26;
+    private static final int alphabetSize = 28; // Tăng kích thước bảng chữ cái lên 27
     public static TrieNode root = new TrieNode();
-    public String getAllWords() {
-        return findAll(root);
-    }
+
     public void add(String key) {
         key = key.toLowerCase();
         TrieNode trieNode = root;
@@ -18,6 +16,14 @@ public class Trie {
                 index = x - 'A';
             } else if (x >= '0' && x <= '9') {
                 index = x - '0';
+            } else if (x == ' ') {
+                index = 26; // Giả sử rằng bạn đã dành một vị trí trong mảng con cho ký tự cách
+            } else if (x == '-') {
+                index = 27;
+            } else if (x == '.') {
+                index = 28;
+            } else if (x== ',') {
+                index = 29;
             }
             if (trieNode.getChildren().get(index) == null) {
                 trieNode.getChildren().set(index, new TrieNode());
@@ -41,6 +47,14 @@ public class Trie {
                 index = x - 'A';
             } else if (x >= '0' && x <= '9') {
                 index = x - '0';
+            } else if (x == ' ') {
+                index = 26; // Giả sử rằng bạn đã dành một vị trí trong mảng con cho ký tự cách
+            } else if (x == '-') {
+                index = 27;
+            } else if (x == '.') {
+                index = 28;
+            } else if (x== ',') {
+                index = 29;
             }
             if (trieNode.getChildren().get(index) == null) {
                 return null;
@@ -49,6 +63,7 @@ public class Trie {
         }
         return trieNode;
     }
+
 
     public String find(TrieNode keyNode) {
         String ans = "";
@@ -78,22 +93,6 @@ public class Trie {
             }
         } catch (Exception e) {
             System.out.println("An error occurred while finding all words: " + e.getMessage());
-        }
-        return ans;
-    }
-
-    private String findAll(TrieNode trieNode) {
-        String ans = "";
-        if (trieNode == null) {
-            return "";
-        }
-        if (trieNode.isEndOfWord()) {
-            ans = trieNode.getWord() + "\n";
-        }
-        for (int i = 0; i < alphabetSize; i++) {
-            if (trieNode.getChildren().get(i) != null) {
-                ans = ans.concat(findAll(trieNode.getChildren().get(i)));
-            }
         }
         return ans;
     }

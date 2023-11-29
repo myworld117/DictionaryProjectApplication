@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="813.0" styleClass="second-color" stylesheets="@../style/search.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.SearchController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="813.0" styleClass="second-color" stylesheets="@../style/search.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.SearchController">
    <children>
       <AnchorPane layoutY="-3.0" prefHeight="459.0" prefWidth="257.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="-3.0">
          <children>
@@ -111,7 +111,7 @@
                         </Button>
                         <TextArea fx:id="wordTypeInput" layoutX="17.0" layoutY="86.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="471.0" styleClass="root">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="15.0" />
                            </font>
                         </TextArea>
                         <Label contentDisplay="RIGHT" layoutX="17.0" layoutY="60.0" text="Loại từ">

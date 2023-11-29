@@ -1,29 +1,24 @@
 package main;
-
 import algo.Trie;
-import com.sun.speech.freetts.Voice;
-import com.sun.speech.freetts.VoiceManager;
+import api.VoiceRSS;
+import com.voicerss.tts.Languages;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.web.WebView;
 import root.NewDictionary;
 import root.Notification;
 import root.Word;
-
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import javafx.scene.layout.VBox;
 public class SearchController extends MenuController implements Initializable {
     private ObservableList<String> list = FXCollections.observableArrayList();
 
@@ -63,7 +58,6 @@ public class SearchController extends MenuController implements Initializable {
     @FXML
     private AnchorPane EditPane;
 
-    private TextToSpeech textToSpeech = new TextToSpeech();
 
     public SearchController() throws IOException {
     }
@@ -72,7 +66,7 @@ public class SearchController extends MenuController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         EditPane.setVisible(false);
         trie = dictionary.getTrie();
-        startListView();
+        getPossibleList();
         searchWord.textProperty().addListener((observableValue, oldValue, newValue) -> {
             updateListView(newValue);
             updateDefinionArea(newValue);
@@ -80,9 +74,11 @@ public class SearchController extends MenuController implements Initializable {
         });
     }
 
+
+
     public void updateHeader(String word) {
         if(dictionary.binaryLookUp(word) == NewDictionary.NOT_FOUND || word =="") {
-            Header.setText("");
+            Header.setText("Nghĩa của từ");
         }
         else {
             Header.setText(word);
@@ -96,15 +92,13 @@ public class SearchController extends MenuController implements Initializable {
              DefinitionArea.getEngine().loadContent(dictionary.binaryLookUp(word));
         }
     }
-    public void startListView() {
-        if (searchWord.getText() == "") {
-            list.clear();
-            list.addAll(NewDictionary.getTmp());
-            ListWordView.setItems(list);
+
+    public void getPossibleList() {
+        for (Word word: dictionary.getVocab()) {
+            list.add(word.getWord_target());
         }
+        ListWordView.setItems(list);
     }
-
-
     private void updateListView(String prefix) {
         list.clear();
         if (!prefix.isEmpty()) {
@@ -112,6 +106,8 @@ public class SearchController extends MenuController implements Initializable {
             list.addAll(words.split("\n"));
             ListWordView.setItems(list);
 
+        } else {
+            getPossibleList();
         }
     }
 
@@ -126,7 +122,7 @@ public class SearchController extends MenuController implements Initializable {
                 alert.showAndWait();
             } else {
                 searchWord.setText(word);
-                Header.setText(word);
+                Header.setText(word.toLowerCase());
                 DefinitionArea.getEngine().loadContent(definition, "text/html");
             }
         }
@@ -213,7 +209,6 @@ public class SearchController extends MenuController implements Initializable {
     }
 
 
-
     @FXML
     public void clearSearch() {
         Header.setText("Nghĩa của từ");
@@ -222,38 +217,26 @@ public class SearchController extends MenuController implements Initializable {
         DefinitionArea.getEngine().loadContent("");
     }
 
-
     @FXML
-    public void speakUS() {
-        System.out.println("US button clicked");
-        // Add these lines for debugging
-        System.out.println("Text to speak: " + searchWord.getText());
-        if (textToSpeech == null) {
-            System.out.println("textToSpeech object is null");
-        } else {
-            System.out.println("textToSpeech object is not null");
-        }
-        textToSpeech.speak(searchWord.getText());
-    }
-
-    @FXML
-    private void handleClickSoundBtn() {
-        System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
-        Voice voice = VoiceManager.getInstance().getVoice("kevin16");
-        if (voice != null) {
-            voice.allocate();
-            voice.speak(searchWord.getText());
-        } else throw new IllegalStateException("Cannot find voice: kevin16");
+    private void handleClickSoundBtn() throws Exception {
+        VoiceRSS.speak(searchWord.getText(), Languages.English_UnitedStates);
     }
 
     @FXML
     public void handleOnRemoveButton() {
-        Notification notification = new Notification();
-        notification.forCofirm("Xóa từ", "Bạn có chắc chắn muốn xóa từ này ?");
-        dictionary.removeWord(searchWord.getText());
-        updateListView(searchWord.getText());
-        DefinitionArea.getEngine().loadContent("");
-        Header.setText("");
+        Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmAlert.setContentText("Bạn có muốn xóa từ này không");
+        confirmAlert.setHeaderText("Thông báo");
+        ButtonType buttonAdd = new ButtonType("Xóa");
+        ButtonType buttonCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+        confirmAlert.getButtonTypes().setAll(buttonAdd, buttonCancel);
+        Optional<ButtonType> result = confirmAlert.showAndWait();
+        if (result.isPresent() && result.get()== buttonAdd && dictionary.binaryLookUp(searchWord.getText()) != NewDictionary.NOT_FOUND) {
+            dictionary.removeWord(searchWord.getText());
+            updateListView(searchWord.getText());
+            DefinitionArea.getEngine().loadContent("");
+            Header.setText("Nghĩa của từ");
+        }
     }
 
     @FXML
@@ -288,7 +271,7 @@ public class SearchController extends MenuController implements Initializable {
         }
         else if (dictionary.binaryLookUp(searchWord.getText() )== NewDictionary.NOT_FOUND) {
             Notification notification = new Notification();
-            notification.forInfo("Thông báo", "Từ bạn tìm không tồn tại");
+            notification.forInfo("Thông báo", "Từ bạn sửa không tồn tại");
         } else if (searchWord.getText().isEmpty()) {
             Notification notification = new Notification();
             notification.forWarning("Thông báo", "Bạn chưa nhập từ nào");

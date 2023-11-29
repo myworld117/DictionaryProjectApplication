@@ -21,7 +21,6 @@ public class NewDictionary {
     public NewDictionary() {
         loadDataFromHTMLFile(PATH, vocab);
         vocab.sort(new SortPattern());
-        this.getWordSearching();
     }
 
     public static List<String> getTmp() {
@@ -34,12 +33,6 @@ public class NewDictionary {
 
     public ArrayList<Word> getVocab() {
         return vocab;
-    }
-    public List<String> getWordSearching() {
-        for (Word word: vocab) {
-            tmp.add(word.getWord_target());
-        }
-        return tmp;
     }
     public Trie getTrie() {
         return trie;
@@ -140,7 +133,7 @@ public class NewDictionary {
         String definition1 = "<html><i>" + word + "  /" + pronunciation
                 + "/</i><br/><ul><li><b><i>" + wordType
                 + "</i></b><ul><li><font color='#cc0000'><b> " + meaning
-                + " </b></font></li></ul></html>";
+                + " </b></font></ul></li></ul></html>";
         return definition1;
     }
 

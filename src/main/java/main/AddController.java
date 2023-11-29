@@ -47,16 +47,12 @@ public class AddController extends MenuController implements Initializable {
     public Word getAddWord() {
         if (!meaningArea.getText().isEmpty() &&
                 !pronunArea.getText().isEmpty() &&
-                !wordtypeArea.getText().isEmpty() &&
-                !meaningArea.getText().isEmpty()) {
+                !wordtypeArea.getText().isEmpty() && !wordArea.getText().isEmpty()) {
             String word = wordArea.getText().toLowerCase();
             String meaning = meaningArea.getText();
             String wordType = wordtypeArea.getText();
             String pronunciation = pronunArea.getText();
-            String definition = "<html><i>" + word + "  /" + pronunciation
-                    + "/</i><br/><ul><li><b><i>" + wordType
-                    + "</i></b><ul><li><font color='#cc0000'><b> " + meaning
-                    + " </b></font></li></ul><html>";
+            String definition = dictionary.getWordFormatted(word, pronunciation, wordType, meaning);
             Word newWord = new Word(word, definition);
 
             return newWord;

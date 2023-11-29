@@ -3,7 +3,7 @@ package algo;
 import java.util.ArrayList;
 
 public class TrieNode {
-    private static final int alphabetSize = 26;
+    private static final int alphabetSize = 30;
     private ArrayList<TrieNode> children = new ArrayList<>(alphabetSize);
     private boolean endOfWord;
     private String meaningOfWord;
