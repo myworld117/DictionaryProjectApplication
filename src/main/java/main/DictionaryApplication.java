@@ -16,6 +16,7 @@ public class DictionaryApplication extends Application {
         primaryStage.setTitle("NetDict");
         primaryStage.getIcons().add(icon);
         primaryStage.setScene(new Scene(root, 868, 600));
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 

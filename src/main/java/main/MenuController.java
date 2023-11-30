@@ -68,7 +68,6 @@ public class MenuController implements Initializable {
             searchController = searchLoader.getController();
             FXMLLoader translateLoader = new FXMLLoader(getClass().getResource("/dictionary/translate2.fxml"));
             translatePane = translateLoader.load();
-            //translationController = translateLoader.getController();
             translateController = translateLoader.getController();
             FXMLLoader addLoader = new FXMLLoader(getClass().getResource("/dictionary/add.fxml"));
             addPane = addLoader.load();
@@ -139,7 +138,6 @@ public class MenuController implements Initializable {
     @FXML
     public void toTranslatePanel() {
         translateController.clearTranslate();
-        //translationController.clearFromLang();
         sideContent.getChildren().setAll(translatePane);
     }
 

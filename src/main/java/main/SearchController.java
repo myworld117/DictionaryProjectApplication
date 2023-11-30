@@ -81,7 +81,7 @@ public class SearchController extends MenuController implements Initializable {
             Header.setText("Nghĩa của từ");
         }
         else {
-            Header.setText(word);
+            Header.setText(word.toLowerCase());
         }
     }
     public void updateDefinionArea(String word) {
@@ -201,6 +201,7 @@ public class SearchController extends MenuController implements Initializable {
                         String definition1 = dictionary.getWordFormatted(word, pronunciation, wordType, meaning);
                         Word newWord = new Word(word, definition1);
                         dictionary.addWord(newWord);
+                        dictionary.addWordToFile(newWord, source);
                         updateListView(word);
                     });
                 }
@@ -213,7 +214,6 @@ public class SearchController extends MenuController implements Initializable {
     public void clearSearch() {
         Header.setText("Nghĩa của từ");
         searchWord.clear();
-        list.clear();
         DefinitionArea.getEngine().loadContent("");
     }
 
@@ -250,7 +250,7 @@ public class SearchController extends MenuController implements Initializable {
             String word = searchWord.getText();
             String wordType = wordTypeInput.getText();
             String newMeaning = newMeaningInput.getText();
-            String path = "src\\main\\resources\\vocab\\dictionaries.txt";
+            String path = "src\\main\\resources\\vocab\\eng_vie.txt";
             dictionary.updateWord(word, wordType, newMeaning, path);
         }
         EditPane.setVisible(false);
