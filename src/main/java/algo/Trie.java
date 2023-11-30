@@ -1,7 +1,7 @@
 package algo;
 
 public class Trie {
-    private static final int alphabetSize = 28; // Tăng kích thước bảng chữ cái lên 27
+    private static final int alphabetSize = 30;
     public static TrieNode root = new TrieNode();
 
     public void add(String key) {

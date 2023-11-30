@@ -24,7 +24,7 @@ public class SynonymSearchThread extends Thread {
     public void run() {
         JSONObject list;
         try {
-            list = SynonymAPI.getSynonyms(searchWord.getText());
+            list = SynonymAPI.getSynonyms(searchWord.getText().toLowerCase());
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
