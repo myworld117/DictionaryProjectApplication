@@ -1,0 +1,53 @@
+.root {
+    -fx-background-color: #303137FF;
+    -button-color: #747f8d;
+    -hover-button-color: #2e3338;
+
+    -text-color: white;
+    -hover-text-color: #2e3338;
+
+    -title-color: white;
+    -hover-background-color: #D4D7DC;
+}
+
+.text-field {
+    -fx-background-size: 20;
+    -fx-background-color: #303137FF;
+    -fx-background-radius: 0 3 3 0;
+    -fx-text-color: -text-color;
+    -fx-text-fill: -text-color;
+    -fx-border-radius: 0 2 2 0;
+    -fx-border-width: 1;
+    -fx-font-size: 15;
+}
+
+.text-field:focused {
+    -fx-border-color: -text-color;
+}
+
+.button-reset {
+    -fx-background-color: #303137FF;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 11;
+    -fx-font-weight: bold;
+}
+
+.button-reset :hover {
+    -fx-cursor: hand;
+}
+
+.button {
+    -fx-background-color: #303137FF;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 11;
+    -fx-font-weight: bold;
+}
+
+.button:hover {
+    -fx-cursor: hand;
+}
+
+.text {
+    -fx-text-fill: -text-color;
+    -fx-font-size: 17;
+}
