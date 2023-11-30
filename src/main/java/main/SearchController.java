@@ -219,6 +219,11 @@ public class SearchController extends MenuController implements Initializable {
 
     @FXML
     private void handleClickSoundBtn() throws Exception {
+        VoiceRSS.speak(searchWord.getText(), Languages.English_GreatBritain);
+    }
+
+    @FXML
+    private void handleClickSound2Btn() throws Exception {
         VoiceRSS.speak(searchWord.getText(), Languages.English_UnitedStates);
     }
 

@@ -79,12 +79,6 @@
 }
 
 
-.html-editor {
-    -fx-pref-width: 100;
-    -fx-border-radius: 3;
-    -fx-font-size: 12;
-}
-
 .button {
     -fx-pref-width: 35;
     -fx-pref-height: 35;
@@ -114,6 +108,35 @@
     -fx-background-color: none;
 }
 
+.button-speak-uk {
+    -fx-graphic: url('../image/uk.png');
+    -fx-background-color: #303137FF;
+    -fx-background-size: 30;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-pref-width: 25;
+    -fx-pref-height: 25;
+}
+
+.button-speak-uk:hover {
+    -fx-graphic: url('../image/uk.png');
+    -fx-background-color: none;
+}
+
+.button-speak-us {
+    -fx-graphic: url('../image/us.png');
+    -fx-background-color: #303137FF;
+    -fx-background-size: 30;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-pref-width: 25;
+    -fx-pref-height: 25;
+}
+
+.button-speak-us:hover {
+    -fx-graphic: url('../image/us.png');
+    -fx-background-color: none;
+}
 
 .button-remove {
     -fx-graphic: url('../image/trash.png');

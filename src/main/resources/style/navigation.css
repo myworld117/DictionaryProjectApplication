@@ -67,12 +67,12 @@
     -fx-background-color: #b33127;
 }
 
-.button-favourite {
+.button-synonym {
     -fx-background-color: none;
-    -fx-graphic: url('../image/favourite.png');
+    -fx-graphic: url('../image/equal.png');
 }
 
-.button-favourite:focused{
+.button-synonym:focused{
     -fx-background-color: #b33127;
 }
 

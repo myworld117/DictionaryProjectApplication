@@ -48,7 +48,6 @@ public class SynonymSearchThread extends Thread {
         for (int i = 0; i < wordlist.length(); i++) {
             String v = wordlist.getString(i);
             Button wordItem = new Button(v);
-            wordItem.setStyle("-fx-background-color: #ff0000;");
             wordlistBox.getChildren().add(wordItem);
         }
     }

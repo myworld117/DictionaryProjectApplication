@@ -15,7 +15,7 @@ public class DictionaryApplication extends Application {
         Image icon = new Image("image/logo.png");
         primaryStage.setTitle("NetDict");
         primaryStage.getIcons().add(icon);
-        primaryStage.setScene(new Scene(root, 857, 600));
+        primaryStage.setScene(new Scene(root, 868, 600));
         primaryStage.show();
     }
 
